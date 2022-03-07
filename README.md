@@ -1,14 +1,11 @@
 This is a project to create URL shortening service. 
 For example, if we shorten the following URL:
+<br/>
+> <https://stackoverflow.com/questions/43580131/exec-gcc-executable-file-not-found-in-path-when-trying-go-build>
 
-```bash
-https://stackoverflow.com/questions/43580131/exec-gcc-executable-file-not-found-in-path-when-trying-go-build
-```
 We will get:
-
-```bash
-https://localhost:3030/ax5cs3
-```
+<br/>
+> <https://localhost:3030/ax5cs3>
 
 Other than simple shortening, the API also implement rate limiting function to limit the no of request to shorten URL in a certain duration. 
 
