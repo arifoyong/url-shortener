@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Home() {
   const [url, setUrl] = useState("")
-  const [shortUrl, setShortUrl] = useState("http://localhost:3000/test")
+  const [shortUrl, setShortUrl] = useState("")
 
   const handleChange = (e) => {
     e.preventDefault()
@@ -57,18 +57,23 @@ export default function Home() {
         </nav>
 
         <main className="bg-yellow-200 flex-1 pt-8">
-          <div className="container md:px-6 py-4 mx-auto flex flex-col  md:flex-row  ">
-            <div className="md:w-1/3 px-6 py-2 mx-auto">
-              <div className="h-72 w-96 relative">
-                <Image src="/hero.svg" alt="hero" layout="fill" objectFit="cover"/>
+          <div className="container px-2 py-2 mx-auto flex flex-col md:flex-row  ">
+            <div className="md:w-1/2 md:px-0 px-10 mx-auto ">
+              <div className="object-cover px-4 py-4">
+                 <Image src="/hero.svg" alt="hero" 
+                        width="1280" 
+                        height="800"/>
               </div>
             </div>
-            <div className="flex flex-col md:w-2/3 md:px-8 py-2 mt-4 justify-center">
+            <div className="flex flex-col md:w-1/2 px-4 py-2 mt-4 justify-center">
+              <p className="text-gray-500 font-medium italic">
+                Shorten horrible URLs
+              </p>
               <p className="font-bold text-4xl">
                 Mini links, big results
               </p>
               <p className="mt-2">
-                URL shortening service to help you grow your brand
+                Mini helps you to take control of your web links. We provide the easiest way to shorten your links. 
               </p>
 
               <div className="flex mt-6 w-full">
