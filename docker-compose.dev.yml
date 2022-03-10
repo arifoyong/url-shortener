@@ -2,10 +2,14 @@ version: "3"
 
 services:
   api: 
-    build: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile.dev
     container_name: api
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
     depends_on:
       - db
   frontend:

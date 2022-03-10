@@ -1,0 +1,21 @@
+FROM golang:alpine as builder
+
+RUN mkdir /build
+
+ADD . /build
+
+WORKDIR /build
+
+# Cache & install dependencies
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy application files
+COPY . .
+
+# Install reflex for development
+RUN go install github.com/cespare/reflex@latest
+
+# Expose port & start app
+EXPOSE 3000
+CMD reflex -g '*.go' go run main.go --start-service

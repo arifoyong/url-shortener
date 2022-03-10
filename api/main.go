@@ -14,7 +14,7 @@ import (
 
 func setupRoutes(app *fiber.App) {
 	app.Get("/test", func(c *fiber.Ctx) error {
-		return c.Status(fiber.StatusOK).JSON(fiber.Map{"msg": "ok from test"})
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{"msg": "test again"})
 	})
 	app.Get("/:url", routes.ResolveURL)
 	app.Post("/api/v1", routes.ShortenURL)

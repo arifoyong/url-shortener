@@ -2,20 +2,28 @@ import {useRouter} from 'next/router'
 import {useEffect} from 'react'
 
 const ShortUrl = () => {
-  const router = useRouter()
-  const {url} = router.query
+  
+  
 
-  useEffect(() => {
-    router.push({
-      pathname: 'http://www.nba.com'
-    });
+  useEffect(async () => {
+  
+    const last = window.location.href.split('/').pop();
+    console.log("fetching from :", `http://localhost:3000/${last}`)
+    const res = await fetch(`http://localhost:3000/${last}`)
+    const data = await res.json()
 
- 
+    console.log("data:", data)
+    if (data.url) {
+      window.location.replace(data.url)
+    }
   }, []);
 
   
-  
-  return <div></div>
+  return (
+    <div>
+      <p>page not available</p>
+    </div>
+  )
 }
 
 
