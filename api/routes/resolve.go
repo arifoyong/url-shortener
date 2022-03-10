@@ -24,5 +24,5 @@ func ResolveURL(c *fiber.Ctx) error {
 
 	_ = rInr.Incr(database.Ctx, "counter")
 
-	return c.Redirect(val, 301)
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{"url": val})
 }
