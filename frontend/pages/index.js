@@ -5,12 +5,15 @@ import {isURL} from '../helpers/helpers'
 
 export default function Home() {
   const [url, setUrl] = useState("")
-  const [shortUrl, setShortUrl] = useState("")
+  const [data, setData] = useState({
+    error: null,
+    shortUrl: null
+  })
 
   const handleChange = e => {
     e.preventDefault()
     setUrl(e.target.value)
-    e.target.value === "" && setShortUrl("")
+    e.target.value === "" && setData({error: null, shortUrl: null})
   }
 
   const handleKeypress = e => {
@@ -29,13 +32,30 @@ export default function Home() {
       )
 
       const result = await res.json()
-      setShortUrl(result.short)
+      if (result) {
+        setData({error: result.error, shortUrl: result.short})
+      } 
     }  else {
       alert("Please enter a valid URL!")
     }
   }
 
-  const showShortUrl = () => (
+  const showError = () => (
+    <div className="flex flex-col mt-4">
+        <p>
+            Ooppsss.... there was an error: [{data.error}]
+        </p>
+    </div>
+  )
+
+  const showShortUrl = () => 
+    data.error ? (
+      <div className="flex flex-col mt-4">
+          <p>
+              Ooppsss.... there was an error: [{data.error}]
+          </p>
+      </div>
+    ) : (
     <div className="flex flex-col mt-4">
       <div className="flex mx-auto justify-around">
         <div className="object-cover ">
@@ -50,12 +70,13 @@ export default function Home() {
       </div>
       <div className="flex-1 px-2 py-2 bg-white text-yellow-800 rounded-lg flex justify-between">
         <p>
-          {shortUrl}
+          {data.shortUrl || "your minified URL" }
         </p>
         <button className= "hover:text-yellow-600 " 
-              onClick={() => navigator.clipboard.writeText(shortUrl)}>
+              onClick={() => data.shortUrl && navigator.clipboard.writeText(data.shortUrl)}>
           copy
         </button>
+ 
       </div>
     </div>
   )
@@ -92,7 +113,9 @@ export default function Home() {
                 minify
               </button>
             </div>
-            { shortUrl && showShortUrl()}
+            {/* { data.shortUrl && showShortUrl()}
+            { data.error && showError()} */}
+            {showShortUrl()}
           </div>
           
         </div>  
