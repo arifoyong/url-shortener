@@ -1,10 +1,10 @@
 FROM golang:alpine as builder
 
-RUN mkdir /build
+RUN mkdir /app
 
-ADD . /build
+ADD . /app
 
-WORKDIR /build
+WORKDIR /app
 
 # Cache & install dependencies
 COPY go.mod go.sum ./
@@ -17,5 +17,5 @@ COPY . .
 RUN go install github.com/cespare/reflex@latest
 
 # Expose port & start app
-EXPOSE 3000
+EXPOSE 8000
 CMD reflex -g '*.go' go run main.go --start-service

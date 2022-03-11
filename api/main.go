@@ -14,9 +14,9 @@ import (
 
 func setupRoutes(app *fiber.App) {
 	app.Get("/test", func(c *fiber.Ctx) error {
-		return c.Status(fiber.StatusOK).JSON(fiber.Map{"msg": "test again"})
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{"msg": "testing"})
 	})
-	app.Get("/:url", routes.ResolveURL)
+	app.Get("/api/v1/:url", routes.ResolveURL)
 	app.Post("/api/v1", routes.ShortenURL)
 }
 
@@ -28,10 +28,11 @@ func main() {
 	app := fiber.New()
 	app.Use(logger.New())
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "http://localhost:3030",
+		AllowOrigins: "http://" + os.Getenv("FRONTEND_DOMAIN"),
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
 
 	setupRoutes(app)
+	fmt.Println("Running server on", os.Getenv("APP_PORT"))
 	log.Fatal(app.Listen(os.Getenv("APP_PORT")))
 }

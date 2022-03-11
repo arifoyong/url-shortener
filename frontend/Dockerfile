@@ -12,7 +12,7 @@ COPY . /usr/src/
 RUN npm install 
 
 # start app
-RUN npm run build
-EXPOSE 3030
+# RUN npm run build
+EXPOSE 3000
 # CMD npm run start
 # ENTRYPOINT ["npm", "run"]

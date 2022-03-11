@@ -1,28 +1,33 @@
-import {useRouter} from 'next/router'
 import {useEffect} from 'react'
+import Layout from '../components/layout'
 
 const ShortUrl = () => {
+  useEffect( () => {
+    async function fetchData() {
+      const shortURL = window.location.href.split("/").pop();
+      console.log(process.env.NEXT_PUBLIC_API )
+      const res = await fetch(process.env.NEXT_PUBLIC_API + "/" + shortURL)
+      const data = await res.json()
   
-  
-
-  useEffect(async () => {
-  
-    const last = window.location.href.split('/').pop();
-    console.log("fetching from :", `http://localhost:3000/${last}`)
-    const res = await fetch(`http://localhost:3000/${last}`)
-    const data = await res.json()
-
-    console.log("data:", data)
-    if (data.url) {
-      window.location.replace(data.url)
+      if (data.url) {
+        window.location.replace(data.url)
+      }
     }
+
+    fetchData()
   }, []);
 
-  
   return (
-    <div>
-      <p>page not available</p>
-    </div>
+    <Layout>
+      <div className="flex flex-col items-center justify-center mx-auto">
+        <p className="text-5xl font-bold py-4">
+          404 Not Found
+        </p>
+        <p className="text-xl">
+          Oopsss... the page you're looking is not available.
+        </p>
+      </div>
+    </Layout>
   )
 }
 
