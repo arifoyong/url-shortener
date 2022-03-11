@@ -1,13 +1,19 @@
+
+
+7. Add screenshot on readme.md
+8. Prevent 404 to appear first before redirect
+
+
+DONE
 1. Responsive page
-2. Revamp UI -> bg color tilted, with white background
-   consider complementary color for navbar & footer
 3. Add hover on brand + link
 5. Add copy function on the resulting short URL
-7. Add screenshot on readme.md
 8. put api address to .env for frontend
 9. Revamp 404page
 10. Change localhost3000 --> to frontend host
-
 6. Add 404 page
 4. Change redirect to frontend instead of backend
    Edit backend GET request
+
+2. Revamp UI -> bg color tilted, with white background
+   consider complementary color for navbar & footer

@@ -18,15 +18,15 @@ const ShortUrl = () => {
   }, []);
 
   return (
-    <Layout>
-      <div className="flex flex-col items-center justify-center mx-auto">
-        <p className="text-5xl font-bold py-4">
-          404 Not Found
-        </p>
-        <p className="text-xl">
-          Oopsss... the page you're looking is not available.
-        </p>
-      </div>
+      <Layout>
+        <div className="flex flex-col items-center justify-center mx-auto">
+          <p className="text-5xl font-bold py-4">
+            Page Not Found
+          </p>
+          <p className="text-xl">
+            Ops the page you are looking is not available.
+          </p>          
+        </div>
     </Layout>
   )
 }

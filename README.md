@@ -10,6 +10,9 @@ We will get:
 Other than simple shortening, the API also implement rate limiting function to limit the no of request to shorten URL in a certain duration. 
 
 
+Screenshot:
+![url-shortening-screenshot](/readme/screenshot_01.png "Screenshot")
+
 ## How to use
 
 To run in production mode:

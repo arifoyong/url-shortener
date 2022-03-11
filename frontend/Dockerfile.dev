@@ -1,0 +1,15 @@
+# base image
+FROM node:alpine
+
+# Create working directory
+RUN mkdir -p /usr/src
+WORKDIR /usr/src
+
+# COPY source files
+COPY . /usr/src/
+
+# Install dependencies
+RUN npm install 
+
+# start app
+EXPOSE 3000
